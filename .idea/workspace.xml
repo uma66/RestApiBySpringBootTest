@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee81fee4-1e42-4879-967e-b16dba96d878" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/TableInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/HDFSWritableByteChannel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/companyname/apps/controller/BlobInsertToHDFSController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/companyname/apps/controller/BlobInsertToHDFSController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/companyname/apps/entity/BlobInsertHdfsRequestEntity.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/companyname/apps/entity/BlobInsertHdfsResponseEntity.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/FilesInsertToImpalaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/FilesInsertToImpalaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FileFormatTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FileFormatTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FilesInsertToImpalaRequestEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FilesInsertToImpalaRequestEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/companyname/apps/util/HDFSParquetWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/companyname/apps/util/HDFSParquetWriter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -32,43 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IOException.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/io/IOException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FilesInsertToImpalaController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/FilesInsertToImpalaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
-                <element signature="e#322#323#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BlobInsertToHdfsResponseEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/BlobInsertToHdfsResponseEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FilesInsertToImpalaRequestEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FilesInsertToImpalaRequestEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+            <state relative-caret-position="151">
+              <caret line="61" column="90" lean-forward="true" selection-start-line="61" selection-start-column="90" selection-end-line="61" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,46 +41,80 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/TableInfo.java">
+      <file leaf-file-name="HDFSParquetWriter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/util/HDFSParquetWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileFormatTypes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FileFormatTypes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResponseEntity.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.0.7.RELEASE/8f92e4f93393dda9c11d4839a10c4aa66941870e/spring-web-5.0.7.RELEASE-sources.jar!/org/springframework/http/ResponseEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="270" column="34" selection-start-line="270" selection-start-column="34" selection-end-line="270" selection-end-column="34" />
+            <state relative-caret-position="113">
+              <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
               <folding>
-                <element signature="e#7389#7390#0" expanded="true" />
-                <element signature="e#7430#7431#0" expanded="true" />
-                <element signature="e#7844#7845#0" expanded="true" />
-                <element signature="e#7888#7889#0" expanded="true" />
-                <element signature="e#8072#8073#0" expanded="true" />
-                <element signature="e#8114#8115#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpStatus.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.0.7.RELEASE/8f92e4f93393dda9c11d4839a10c4aa66941870e/spring-web-5.0.7.RELEASE-sources.jar!/org/springframework/http/HttpStatus.java">
+      <file leaf-file-name="HDFSWritableByteChannel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/HDFSWritableByteChannel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="170" column="4" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="4" />
+            <state relative-caret-position="1095">
+              <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1871#1872#0" expanded="true" />
+                <element signature="e#1905#1906#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrowFileWriter.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/ipc/ArrowFileWriter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="44" column="81" lean-forward="true" selection-start-line="44" selection-start-column="81" selection-end-line="44" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WritableByteChannel.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/nio/channels/WritableByteChannel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DictionaryProvider.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/dictionary/DictionaryProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FieldType.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/types/pojo/FieldType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+              <folding>
+                <element signature="e#1308#1309#0" expanded="true" />
+                <element signature="e#1362#1363#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImpalaSchema.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/ImpalaSchema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,7 +132,16 @@
     <findStrings>
       <find>file</find>
       <find>https</find>
+      <find>childrenBuilder</find>
       <find>tablename</find>
+      <find>sb</find>
+      <find>FloatingPointPrecision</find>
+      <find>ArrowType</find>
+      <find>DictionaryProvider</find>
+      <find>Field</find>
+      <find>arrowVectorSchemaRoot</find>
+      <find>writeLocalFile</find>
+      <find>arrowFileWriter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -332,9 +340,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6145366526000" />
+        <entry key="$PROJECT_DIR$" value="6145383616000" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="677814028" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="4193670047" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2083459160" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="2240503946" />
       </map>
@@ -545,16 +553,19 @@
         <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/DBDistination.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/TableInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/BlobInsertToHdfsResponseEntity.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FileFormatTypes.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FilesInsertToImpalaRequestEntity.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/ImpalaSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/HDFSWritableByteChannel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/util/HDFSParquetWriter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/FilesInsertToImpalaController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="26" />
-    <option name="y" value="46" />
+    <option name="x" value="130" />
+    <option name="y" value="61" />
     <option name="width" value="1280" />
     <option name="height" value="655" />
   </component>
@@ -614,6 +625,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test_api" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="test_api" type="b2602c69:ProjectViewProjectNode" />
@@ -734,7 +754,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="26" y="46" width="1280" height="655" extended-state="0" />
+    <frame x="3" y="62" width="1280" height="655" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -742,7 +762,7 @@
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30286738" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30286738" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Designer" />
@@ -779,17 +799,6 @@
           <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/TestApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#382#383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -865,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/BlobInsertToHdfsRequestEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/BlobInsertToHDFSController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -897,10 +899,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="30" column="67" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
+        <state relative-caret-position="30">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -913,22 +915,154 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/BlobInsertToHdfsResponseEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FileFormatTypes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+        <state relative-caret-position="-96">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/TestApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/BlobInsertToHdfsRequestEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/types/pojo/Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/types/pojo/Schema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="105" column="9" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="1003" column="31" selection-start-line="1003" selection-start-column="31" selection-end-line="1003" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/util/function/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/types/pojo/ArrowType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="459" lean-forward="true" selection-start-line="459" selection-end-line="459" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/types/TimeUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/ImpalaSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/types/pojo/FieldType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#1362#1363#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/entity/FilesInsertToImpalaRequestEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        <state relative-caret-position="75">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/dictionary/DictionaryProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/nio/channels/WritableByteChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.arrow/arrow-vector/0.10.0/28f707e148c3d5575e46cbcb09ed2e01b6503fdd/arrow-vector-0.10.0-sources.jar!/org/apache/arrow/vector/ipc/ArrowFileWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="44" column="81" lean-forward="true" selection-start-line="44" selection-start-column="81" selection-end-line="44" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/HDFSWritableByteChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1871#1872#0" expanded="true" />
+            <element signature="e#1905#1906#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/util/HDFSParquetWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -937,12 +1071,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/companyname/apps/controller/FilesInsertToImpalaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
+        <state relative-caret-position="151">
+          <caret line="61" column="90" lean-forward="true" selection-start-line="61" selection-start-column="90" selection-end-line="61" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#322#323#0" expanded="true" />
           </folding>
         </state>
       </provider>
