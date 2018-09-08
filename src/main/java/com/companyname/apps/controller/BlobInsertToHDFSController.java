@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 import java.io.File;
 
 
-@Controller
+@RestController
 public class BlobInsertToHDFSController {
 
     //Save the uploaded file to this folder
@@ -31,7 +31,6 @@ public class BlobInsertToHDFSController {
     }
 
     @PostMapping(value = "/blob/insert/hdfs", consumes = {"multipart/form-data"})
-    @ResponseBody
     public ResponseEntity<BlobInsertHdfsResponseEntity> upload(@RequestParam("file") MultipartFile file,
                                                                @RequestParam("params") String params,
                                                                RedirectAttributes redirectAttributes) {
@@ -78,5 +77,3 @@ public class BlobInsertToHDFSController {
 
     }
 }
-
-
