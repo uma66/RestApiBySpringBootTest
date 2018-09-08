@@ -2,11 +2,14 @@ package com.companyname.apps.controller;
 
 import com.companyname.apps.entity.BlobInsertHdfsRequestEntity;
 import com.companyname.apps.entity.BlobInsertHdfsResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.ResponseEntity;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -29,9 +32,9 @@ public class BlobInsertToHDFSController {
 
     @PostMapping(value = "/blob/insert/hdfs", consumes = {"multipart/form-data"})
     @ResponseBody
-    public BlobInsertHdfsResponseEntity upload(@RequestParam("file") MultipartFile file,
-                                               @RequestParam("params") String params,
-                                               RedirectAttributes redirectAttributes) {
+    public ResponseEntity<BlobInsertHdfsResponseEntity> upload(@RequestParam("file") MultipartFile file,
+                                                               @RequestParam("params") String params,
+                                                               RedirectAttributes redirectAttributes) {
 
         if (file.isEmpty()) {
             // exception
@@ -65,14 +68,14 @@ public class BlobInsertToHDFSController {
             e.printStackTrace();
         }
 
-        BlobInsertHdfsResponseEntity response = new BlobInsertHdfsResponseEntity();
-        response.result = "OK";
+        BlobInsertHdfsResponseEntity body = new BlobInsertHdfsResponseEntity();
+        body.result = "OK";
 
+        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Responded", "MyController");
+        return ResponseEntity.ok().headers(headers).body(body);
+//        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 
-
-//        IndexResponse.builder().status(200).message("hello").build()
-
-        return response;
     }
 }
 
