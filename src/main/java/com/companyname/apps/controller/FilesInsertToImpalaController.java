@@ -1,24 +1,25 @@
 package com.companyname.apps.controller;
 
-import com.companyname.apps.entity.BlobInsertToHdfsRequestEntity;
+import com.companyname.apps.entity.FilesInsertToImpalaRequestEntity;
 import com.companyname.apps.entity.BlobInsertToHdfsResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.http.HttpHeaders;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.io.File;
-
 
 @RestController
-public class BlobInsertToHDFSController {
+public class FilesInsertToImpalaController {
 
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "/root/insert";
@@ -27,7 +28,7 @@ public class BlobInsertToHDFSController {
         return true;
     }
 
-    @PostMapping(value = "/blob/insert/hdfs", consumes = {"multipart/form-data"})
+    @PostMapping(value = "/files/insert/hdfs", consumes = {"multipart/form-data"})
     public ResponseEntity<BlobInsertToHdfsResponseEntity> upload(@RequestParam("file") MultipartFile file,
                                                                  @RequestParam("params") String params,
                                                                  RedirectAttributes redirectAttributes) {
@@ -43,20 +44,21 @@ public class BlobInsertToHDFSController {
 
 //            BlobInsertToHdfsRequestEntity entity = params;
             ObjectMapper mapper = new ObjectMapper();
-            BlobInsertToHdfsRequestEntity entity = mapper.readValue(params, BlobInsertToHdfsRequestEntity.class);
+            FilesInsertToImpalaRequestEntity entity = mapper.readValue(params, FilesInsertToImpalaRequestEntity.class);
 
-            System.out.println("dest_path!! => " + entity.dest_path);
+            System.out.println("file_type!! => " + entity.to_format.file_type.toString());
+            System.out.println("compression_type!! => " + entity.to_format.compression_type.toString());
 
             byte[] bytes = file.getBytes();
             String name = file.getOriginalFilename();
 
-            Path path = Paths.get(entity.dest_path, name);
-            System.out.println("path_str: " + path.toString());
-
-            File uploadFile = new File(Paths.get(entity.dest_path, name).toString());
-            BufferedOutputStream uploadFileStream = new BufferedOutputStream(new FileOutputStream(uploadFile));
-            uploadFileStream.write(bytes);
-            uploadFileStream.close();
+//            Path path = Paths.get(entity.dest_path, name);
+//            System.out.println("path_str: " + path.toString());
+//
+//            File uploadFile = new File(Paths.get(entity.dest_path, name).toString());
+//            BufferedOutputStream uploadFileStream = new BufferedOutputStream(new FileOutputStream(uploadFile));
+//            uploadFileStream.write(bytes);
+//            uploadFileStream.close();
 
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
@@ -72,6 +74,6 @@ public class BlobInsertToHDFSController {
 //        headers.add("Responded", "MyController");
         return ResponseEntity.ok().headers(headers).body(body);
 //        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
-
     }
+
 }

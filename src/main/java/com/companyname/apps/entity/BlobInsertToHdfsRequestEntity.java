@@ -1,5 +1,5 @@
 package com.companyname.apps.entity;
 
-public class BlobInsertHdfsRequestEntity {
+public class BlobInsertToHdfsRequestEntity {
     public String dest_path;
 }
