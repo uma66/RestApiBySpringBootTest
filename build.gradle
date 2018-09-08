@@ -29,4 +29,15 @@ dependencies {
 
     // https://mvnrepository.com/artifact/commons-io/commons-io
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    // https://mvnrepository.com/artifact/org.apache.parquet/parquet-avro
+    compile group: 'org.apache.parquet', name: 'parquet-avro', version: '1.10.0'
+    // https://mvnrepository.com/artifact/org.apache.parquet/parquet-hadoop
+    compile group: 'org.apache.parquet', name: 'parquet-hadoop', version: '1.10.0'
+
+
+    // https://mvnrepository.com/artifact/org.apache.arrow/arrow-vector
+    compile group: 'org.apache.arrow', name: 'arrow-vector', version: '0.10.0'
+    // https://mvnrepository.com/artifact/org.apache.arrow/arrow-memory
+    compile group: 'org.apache.arrow', name: 'arrow-memory', version: '0.10.0'
+
 }
