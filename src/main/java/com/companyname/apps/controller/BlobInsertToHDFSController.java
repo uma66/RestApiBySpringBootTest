@@ -3,9 +3,7 @@ package com.companyname.apps.controller;
 import com.companyname.apps.entity.BlobInsertHdfsRequestEntity;
 import com.companyname.apps.entity.BlobInsertHdfsResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,6 +28,7 @@ public class BlobInsertToHDFSController {
     }
 
     @PostMapping(value = "/blob/insert/hdfs", consumes = {"multipart/form-data"})
+    @ResponseBody
     public BlobInsertHdfsResponseEntity upload(@RequestParam("file") MultipartFile file,
                                                @RequestParam("params") String params,
                                                RedirectAttributes redirectAttributes) {
@@ -42,7 +41,7 @@ public class BlobInsertToHDFSController {
         System.out.println("params: " + params);
 
         try {
-
+//            BlobInsertHdfsRequestEntity entity = params;
             ObjectMapper mapper = new ObjectMapper();
             BlobInsertHdfsRequestEntity entity = mapper.readValue(params, BlobInsertHdfsRequestEntity.class);
 
@@ -68,6 +67,10 @@ public class BlobInsertToHDFSController {
 
         BlobInsertHdfsResponseEntity response = new BlobInsertHdfsResponseEntity();
         response.result = "OK";
+
+
+
+//        IndexResponse.builder().status(200).message("hello").build()
 
         return response;
     }
