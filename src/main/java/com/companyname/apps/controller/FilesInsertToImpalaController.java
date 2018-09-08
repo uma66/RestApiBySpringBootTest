@@ -1,5 +1,6 @@
 package com.companyname.apps.controller;
 
+import com.companyname.apps.entity.FileFormatTypes;
 import com.companyname.apps.entity.FilesInsertToImpalaRequestEntity;
 import com.companyname.apps.entity.BlobInsertToHdfsResponseEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,12 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 
 @RestController
 public class FilesInsertToImpalaController {
@@ -37,7 +40,6 @@ public class FilesInsertToImpalaController {
             // exception
         }
 
-//        System.out.println("params: " + params.dest_path);
         System.out.println("params: " + params);
 
         try {
@@ -46,11 +48,19 @@ public class FilesInsertToImpalaController {
             ObjectMapper mapper = new ObjectMapper();
             FilesInsertToImpalaRequestEntity entity = mapper.readValue(params, FilesInsertToImpalaRequestEntity.class);
 
-            System.out.println("file_type!! => " + entity.to_format.file_type.toString());
-            System.out.println("compression_type!! => " + entity.to_format.compression_type.toString());
+            String filename = file.getOriginalFilename();
+            entity.estimateFileTypeIfNeeds(filename);
 
-            byte[] bytes = file.getBytes();
-            String name = file.getOriginalFilename();
+            System.out.println("to_file_type!! => " + entity.to_format.file_type.toString());
+            System.out.println("from_file_type!! => " + entity.from_format.file_type.toString());
+            System.out.println("compression_type!! => " + entity.to_format.compression_type.toString());
+            System.out.println("tablename!! => " + entity.destination.tablename.toString());
+
+            byte[] bytes;
+
+            if (!entity.needsConvertFormat()) {
+                bytes = file.getBytes();
+            }
 
 //            Path path = Paths.get(entity.dest_path, name);
 //            System.out.println("path_str: " + path.toString());
@@ -65,6 +75,9 @@ public class FilesInsertToImpalaController {
 
         } catch (IOException e) {
             e.printStackTrace();
+            BlobInsertToHdfsResponseEntity res = new BlobInsertToHdfsResponseEntity();
+            res.msg = e.toString();
+            return ResponseEntity.badRequest().body(res);
         }
 
         BlobInsertToHdfsResponseEntity body = new BlobInsertToHdfsResponseEntity();
