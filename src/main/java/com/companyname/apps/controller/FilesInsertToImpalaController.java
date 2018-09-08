@@ -3,6 +3,7 @@ package com.companyname.apps.controller;
 import com.companyname.apps.entity.FileFormatTypes;
 import com.companyname.apps.entity.FilesInsertToImpalaRequestEntity;
 import com.companyname.apps.entity.BlobInsertToHdfsResponseEntity;
+import com.companyname.apps.util.HDFSParquetWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -52,9 +53,16 @@ public class FilesInsertToImpalaController {
             entity.estimateFileTypeIfNeeds(filename);
 
             System.out.println("to_file_type!! => " + entity.to_format.file_type.toString());
-            System.out.println("from_file_type!! => " + entity.from_format.file_type.toString());
-            System.out.println("compression_type!! => " + entity.to_format.compression_type.toString());
-            System.out.println("tablename!! => " + entity.destination.tablename.toString());
+//            System.out.println("from_file_type!! => " + entity.from_format.file_type.toString());
+//            System.out.println("compression_type!! => " + entity.to_format.compression_type.toString());
+//            System.out.println("tablename!! => " + entity.destination.tablename.toString());
+            System.out.println("schema!! => " + entity.schema.cols_type.toString());
+
+            try {
+                HDFSParquetWriter.makeArrowSchema(entity.schema.cols_type);
+            } catch (Exception e) {
+                System.out.println("error!!! " + e.toString());
+            }
 
             byte[] bytes;
 

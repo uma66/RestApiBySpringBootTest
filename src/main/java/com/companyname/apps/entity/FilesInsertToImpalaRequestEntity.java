@@ -2,12 +2,12 @@ package com.companyname.apps.entity;
 
 import org.apache.commons.io.FilenameUtils;
 import com.companyname.apps.entity.FileFormatTypes.*;
-
 public class FilesInsertToImpalaRequestEntity {
 
     public TableInfo destination;
     public FileFormatTypes from_format = new FileFormatTypes();
     public FileFormatTypes to_format = new FileFormatTypes();
+    public ImpalaSchema schema = new ImpalaSchema();
 
     public Boolean needsConvertFormat() {
         // toもfromも判明しており、かつfromとtoが違う場合だけ変換が必要
