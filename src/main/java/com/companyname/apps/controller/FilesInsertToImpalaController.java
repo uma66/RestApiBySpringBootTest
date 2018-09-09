@@ -59,7 +59,7 @@ public class FilesInsertToImpalaController {
             System.out.println("schema!! => " + entity.schema.cols_type.toString());
 
             try {
-                HDFSParquetWriter writer = new HDFSParquetWriter(entity.schema.cols_type);
+                HDFSParquetWriter writer = new HDFSParquetWriter(entity.schema.makeArrowSchema());
             } catch (Exception e) {
                 System.out.println("error!!! " + e.toString());
             }
