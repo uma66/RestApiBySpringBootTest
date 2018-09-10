@@ -1,9 +1,7 @@
 package com.companyname.apps.controller;
 
-import com.companyname.apps.entity.FileFormatTypes;
 import com.companyname.apps.entity.FilesInsertToImpalaRequestEntity;
 import com.companyname.apps.entity.BlobInsertToHdfsResponseEntity;
-import com.companyname.apps.util.HDFSParquetWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 
 @RestController
@@ -58,17 +51,14 @@ public class FilesInsertToImpalaController {
 //            System.out.println("tablename!! => " + entity.destination.tablename.toString());
             System.out.println("schema!! => " + entity.schema.cols_type.toString());
 
-            try {
-                HDFSParquetWriter writer = new HDFSParquetWriter(entity.schema.makeArrowSchema());
-            } catch (Exception e) {
-                System.out.println("error!!! " + e.toString());
-            }
+
 
             byte[] bytes;
 
             if (!entity.needsConvertFormat()) {
                 bytes = file.getBytes();
             }
+
 
 //            Path path = Paths.get(entity.dest_path, name);
 //            System.out.println("path_str: " + path.toString());
