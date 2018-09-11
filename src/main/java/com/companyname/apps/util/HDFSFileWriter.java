@@ -1,10 +1,8 @@
 package com.companyname.apps.util;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 
-import java.net.URI;
 import java.nio.file.Paths;
 import java.util.Optional;
 
@@ -28,9 +26,13 @@ public class HDFSFileWriter {
 
     private void setConf() {
         this.conf = new Configuration();
-        if (!this.isLocal) {
+        if (this.isLocal) {
+            conf.set("fs.defaultFS", "file://localhost");
+        } else {
             conf.set("fs.defaultFS", NameNodeHost);
         }
+
+        System.out.println("defaultFS=" + conf.get("fs.defaultFS"));
 
         // Set HADOOP user
         System.setProperty("HADOOP_USER_NAME", "hdfs");
@@ -43,8 +45,9 @@ public class HDFSFileWriter {
             return this.fileSystem.get();
         }
         try {
-            String host = isLocal ? "file://localhost" : NameNodeHost;
-            this.fileSystem = Optional.of(FileSystem.get(URI.create(host), this.conf));
+//            String host = isLocal ? "file://localhost" : NameNodeHost;
+//            this.fileSystem = Optional.of(FileSystem.get(URI.create(host), this.conf));
+            this.fileSystem = Optional.of(FileSystem.get(this.conf));
         } catch (Exception e) {
             System.out.println("e " + e.toString());
         }
@@ -63,11 +66,12 @@ public class HDFSFileWriter {
                 fs.mkdirs(targetPath);
             }
 
-            Path hdfswritepath = new Path(Paths.get(targetDir, "test_2.csv").toString());
+            Path hdfswritepath = new Path(Paths.get(targetDir, fileName).toString());
             FSDataOutputStream outputStream = fs.create(hdfswritepath);
 //            outputStream.writeBytes(csvStr);
             outputStream.write(fileBytes);
             outputStream.close();
+            System.out.println("書き込み完了 => " + hdfswritepath.toString());
 
         } catch (Exception e) {
 
