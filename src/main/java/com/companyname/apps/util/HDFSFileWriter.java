@@ -3,6 +3,7 @@ package com.companyname.apps.util;
 import org.apache.commons.io.IOUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+
 import java.net.URI;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -15,8 +16,9 @@ public class HDFSFileWriter {
     private Boolean isLocal;
 
     public static void main(String[] args) {
+        String csvStr = "a,b,c\n1,2,3\n4,5,6";
         HDFSFileWriter writer = new HDFSFileWriter(true);
-        writer.write("/Users/uma6/IdeaProjects/test_api");
+        writer.write(csvStr.getBytes(),"test_2.csv", "/Users/uma6/IdeaProjects/test_api");
     }
 
     public HDFSFileWriter(Boolean isLocal) {
@@ -41,20 +43,15 @@ public class HDFSFileWriter {
             return this.fileSystem.get();
         }
         try {
-            System.out.println("aaaa");
-            if (this.isLocal) {
-//                this.fileSystem = Optional.of(LocalFileSystem.get(URI.create("/"), this.conf));
-                this.fileSystem = Optional.of(FileSystem.getLocal(this.conf));
-            } else {
-                this.fileSystem = Optional.of(FileSystem.get(URI.create(NameNodeHost), this.conf));
-            }
+            String host = isLocal ? "file://localhost" : NameNodeHost;
+            this.fileSystem = Optional.of(FileSystem.get(URI.create(host), this.conf));
         } catch (Exception e) {
             System.out.println("e " + e.toString());
         }
         return this.fileSystem.get();
     }
 
-    public void write(String targetDir) {
+    public void write(byte[] fileBytes, String fileName, String targetDir) {
 
         try {
             FileSystem fs = getFileSystem();
@@ -66,12 +63,10 @@ public class HDFSFileWriter {
                 fs.mkdirs(targetPath);
             }
 
-            String csvStr = "a,b,c\n1,2,3\n4,5,6";
-
             Path hdfswritepath = new Path(Paths.get(targetDir, "test_2.csv").toString());
             FSDataOutputStream outputStream = fs.create(hdfswritepath);
-            outputStream.writeBytes(csvStr);
-//            outputStream.write(csvStr.getBytes());
+//            outputStream.writeBytes(csvStr);
+            outputStream.write(fileBytes);
             outputStream.close();
 
         } catch (Exception e) {

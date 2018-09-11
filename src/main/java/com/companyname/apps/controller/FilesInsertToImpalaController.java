@@ -2,6 +2,7 @@ package com.companyname.apps.controller;
 
 import com.companyname.apps.entity.FilesInsertToImpalaRequestEntity;
 import com.companyname.apps.entity.BlobInsertToHdfsResponseEntity;
+import com.companyname.apps.util.HDFSFileWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -51,13 +52,15 @@ public class FilesInsertToImpalaController {
 //            System.out.println("tablename!! => " + entity.destination.tablename.toString());
             System.out.println("schema!! => " + entity.schema.cols_type.toString());
 
-
-
+            
             byte[] bytes;
 
             if (!entity.needsConvertFormat()) {
                 bytes = file.getBytes();
             }
+
+            HDFSFileWriter writer = new HDFSFileWriter(true);
+            writer.write(file.getBytes(), file.getOriginalFilename(),"/Users/uma6/IdeaProjects/test_api");
 
 
 //            Path path = Paths.get(entity.dest_path, name);
