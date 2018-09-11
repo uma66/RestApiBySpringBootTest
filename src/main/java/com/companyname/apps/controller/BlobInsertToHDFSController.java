@@ -23,10 +23,6 @@ public class BlobInsertToHDFSController {
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "/root/insert";
 
-    private Boolean doCheck(String any) {
-        return true;
-    }
-
     @PostMapping(value = "/blob/insert/hdfs", consumes = {"multipart/form-data"})
     public ResponseEntity<BlobInsertToHdfsResponseEntity> upload(@RequestParam("file") MultipartFile file,
                                                                  @RequestParam("params") String params,
@@ -42,19 +38,19 @@ public class BlobInsertToHDFSController {
         try {
 
 //            BlobInsertToHdfsRequestEntity entity = params;
-            ObjectMapper mapper = new ObjectMapper();
-            BlobInsertToHdfsRequestEntity entity = mapper.readValue(params, BlobInsertToHdfsRequestEntity.class);
+            final ObjectMapper mapper = new ObjectMapper();
+            final BlobInsertToHdfsRequestEntity entity = mapper.readValue(params, BlobInsertToHdfsRequestEntity.class);
 
             System.out.println("dest_path!! => " + entity.dest_path);
 
-            byte[] bytes = file.getBytes();
-            String name = file.getOriginalFilename();
+            final byte[] bytes = file.getBytes();
+            final String name = file.getOriginalFilename();
 
-            Path path = Paths.get(entity.dest_path, name);
+            final Path path = Paths.get(entity.dest_path, name);
             System.out.println("path_str: " + path.toString());
 
-            File uploadFile = new File(Paths.get(entity.dest_path, name).toString());
-            BufferedOutputStream uploadFileStream = new BufferedOutputStream(new FileOutputStream(uploadFile));
+            final File uploadFile = new File(Paths.get(entity.dest_path, name).toString());
+            final BufferedOutputStream uploadFileStream = new BufferedOutputStream(new FileOutputStream(uploadFile));
             uploadFileStream.write(bytes);
             uploadFileStream.close();
 
@@ -65,10 +61,10 @@ public class BlobInsertToHDFSController {
             e.printStackTrace();
         }
 
-        BlobInsertToHdfsResponseEntity body = new BlobInsertToHdfsResponseEntity();
+        final BlobInsertToHdfsResponseEntity body = new BlobInsertToHdfsResponseEntity();
         body.result = "OK";
 
-        HttpHeaders headers = new HttpHeaders();
+        final HttpHeaders headers = new HttpHeaders();
 //        headers.add("Responded", "MyController");
         return ResponseEntity.ok().headers(headers).body(body);
 //        return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);

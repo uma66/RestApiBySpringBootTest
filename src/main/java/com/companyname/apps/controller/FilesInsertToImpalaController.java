@@ -70,7 +70,7 @@ public class FilesInsertToImpalaController {
 
             System.out.println("fileBytes: " + fileBytes.toString());
             writer.write(fileBytes, file.getOriginalFilename(),"/Users/uma6/IdeaProjects/test_api");
-            
+
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
 

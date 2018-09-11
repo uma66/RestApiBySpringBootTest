@@ -14,8 +14,8 @@ public class HDFSFileWriter {
     private Boolean isLocal;
 
     public static void main(String[] args) {
-        String csvStr = "a,b,c\n1,2,3\n4,5,6";
-        HDFSFileWriter writer = new HDFSFileWriter(true);
+        final String csvStr = "a,b,c\n1,2,3\n4,5,6";
+        final HDFSFileWriter writer = new HDFSFileWriter(true);
         writer.write(csvStr.getBytes(),"test_2.csv", "/Users/uma6/IdeaProjects/test_api");
     }
 
@@ -57,16 +57,16 @@ public class HDFSFileWriter {
     public void write(byte[] fileBytes, String fileName, String targetDir) {
 
         try {
-            FileSystem fs = getFileSystem();
+            final FileSystem fs = getFileSystem();
 
             //==== Create folder if not exists
-            Path targetPath = new Path(targetDir);
+            final Path targetPath = new Path(targetDir);
             if (!fs.exists(targetPath)) {
                 // Create new Directory
                 fs.mkdirs(targetPath);
             }
 
-            Path hdfswritepath = new Path(Paths.get(targetDir, fileName).toString());
+            final Path hdfswritepath = new Path(Paths.get(targetDir, fileName).toString());
             FSDataOutputStream outputStream = fs.create(hdfswritepath);
 //            outputStream.writeBytes(csvStr);
             outputStream.write(fileBytes);
