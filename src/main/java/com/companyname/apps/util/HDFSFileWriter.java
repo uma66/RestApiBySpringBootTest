@@ -2,6 +2,7 @@ package com.companyname.apps.util;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.security.UserGroupInformation;
 
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -22,21 +23,34 @@ public class HDFSFileWriter {
     public HDFSFileWriter(Boolean isLocal) {
         this.isLocal = isLocal;
         setConf();
+        authWithKerberos();
     }
 
     private void setConf() {
         this.conf = new Configuration();
         if (this.isLocal) {
-            conf.set("fs.defaultFS", "file://localhost");
+            this.conf.set("fs.defaultFS", "file://localhost");
         } else {
-            conf.set("fs.defaultFS", NameNodeHost);
+            this.conf.set("fs.defaultFS", NameNodeHost);
         }
 
-        System.out.println("defaultFS=" + conf.get("fs.defaultFS"));
+        System.out.println("defaultFS=" + this.conf.get("fs.defaultFS"));
 
         // Set HADOOP user
         System.setProperty("HADOOP_USER_NAME", "hdfs");
         System.setProperty("hadoop.home.dir", "/");
+    }
+
+    // TODO: 未テスト.
+    private void authWithKerberos() {
+        final String user = "username@REALM.COM";
+        final String keyPath = "username.keytab";
+        try {
+            UserGroupInformation.setConfiguration(this.conf);
+            UserGroupInformation.loginUserFromKeytab(user, keyPath);
+        } catch (Exception e) {
+            System.out.println("kerberos error: " + e.toString());
+        }
     }
 
     // Get the filesystem - HDFS or Local
