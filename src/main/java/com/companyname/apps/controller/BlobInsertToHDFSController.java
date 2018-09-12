@@ -15,13 +15,15 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.File;
-
+import java.util.logging.Logger;
 
 @RestController
 public class BlobInsertToHDFSController {
 
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "/root/insert";
+
+    private static final Logger logger = Logger.getLogger(BlobInsertToHDFSController.class.getName());
 
     @PostMapping(value = "/blob/insert/hdfs", consumes = {"multipart/form-data"})
     public ResponseEntity<BlobInsertToHdfsResponseEntity> upload(@RequestParam("file") MultipartFile file,

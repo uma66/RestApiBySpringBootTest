@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
-
+import java.util.logging.Logger;
 
 @RestController
 public class FilesInsertToImpalaController {
@@ -23,9 +23,7 @@ public class FilesInsertToImpalaController {
     //Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "/root/insert";
 
-    private Boolean doCheck(String any) {
-        return true;
-    }
+    private static final Logger logger = Logger.getLogger(FilesInsertToImpalaController.class.getName());
 
     @PostMapping(value = "/files/insert/hdfs", consumes = {"multipart/form-data"})
     public ResponseEntity<BlobInsertToHdfsResponseEntity> upload(@RequestParam("file") MultipartFile file,
@@ -36,7 +34,7 @@ public class FilesInsertToImpalaController {
             // exception
         }
 
-        System.out.println("params: " + params);
+        logger.info("params: " + params);
 
         try {
 
@@ -47,11 +45,11 @@ public class FilesInsertToImpalaController {
             String filename = file.getOriginalFilename();
             entity.estimateFileTypeIfNeeds(filename);
 
-            System.out.println("to_file_type!! => " + entity.to_format.file_type.toString());
+            logger.info("to_file_type => " + entity.to_format.file_type.toString());
 //            System.out.println("from_file_type!! => " + entity.from_format.file_type.toString());
 //            System.out.println("compression_type!! => " + entity.to_format.compression_type.toString());
 //            System.out.println("tablename!! => " + entity.destination.tablename.toString());
-            System.out.println("schema!! => " + entity.schema.cols_type.toString());
+            logger.info("schema => " + entity.schema.cols_type.toString());
 
 //            byte[] bytes;
             if (!entity.needsConvertFormat()) {
@@ -62,13 +60,13 @@ public class FilesInsertToImpalaController {
 
             byte[] fileBytes = file.getBytes();
 //            byte[] fileBytes2 = Snappy.compress(fileBytes);
-            System.out.println("compression: " + entity.to_format.compression_type);
+            logger.info("compression: " + entity.to_format.compression_type);
             if (entity.to_format.compression_type == FileFormatTypes.CompressionType.snappy) {
                 fileBytes = Snappy.compress(fileBytes);
-                System.out.println("snappy解凍 => " + new String(Snappy.uncompress(fileBytes)));
+                logger.info("snappy解凍 => " + new String(Snappy.uncompress(fileBytes)));
             }
 
-            System.out.println("fileBytes: " + fileBytes.toString());
+            logger.info("fileBytes: " + fileBytes.toString());
             writer.write(fileBytes, file.getOriginalFilename(),"/Users/uma6/IdeaProjects/test_api");
 
             redirectAttributes.addFlashAttribute("message",

@@ -6,6 +6,8 @@ import org.apache.hadoop.security.UserGroupInformation;
 
 import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.logging.Logger;
+
 
 public class HDFSFileWriter {
 
@@ -13,6 +15,7 @@ public class HDFSFileWriter {
     private Optional<FileSystem> fileSystem = Optional.ofNullable(null);
     private Configuration conf;
     private Boolean isLocal;
+    private static final Logger logger = Logger.getLogger(HDFSFileWriter.class.getName());
 
     public static void main(String[] args) {
         final String csvStr = "a,b,c\n1,2,3\n4,5,6";
@@ -34,7 +37,7 @@ public class HDFSFileWriter {
             this.conf.set("fs.defaultFS", NameNodeHost);
         }
 
-        System.out.println("defaultFS=" + this.conf.get("fs.defaultFS"));
+        logger.info("defaultFS=" + this.conf.get("fs.defaultFS"));
 
         // Set HADOOP user
         System.setProperty("HADOOP_USER_NAME", "hdfs");
@@ -85,11 +88,11 @@ public class HDFSFileWriter {
 //            outputStream.writeBytes(csvStr);
             outputStream.write(fileBytes);
             outputStream.close();
-            System.out.println("書き込み完了 => " + hdfswritepath.toString());
+            logger.info("書き込み完了 => " + hdfswritepath.toString());
 
         } catch (Exception e) {
 
-            System.out.println("e2: " + e);
+            logger.severe("e2: " + e);
 
         }
 
