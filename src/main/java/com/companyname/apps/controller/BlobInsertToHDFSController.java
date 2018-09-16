@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class BlobInsertToHDFSController {
 
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "/root/insert";
+    private static final String UPLOADED_FOLDER = "/root/insert";
 
     private static final Logger logger = Logger.getLogger(BlobInsertToHDFSController.class.getName());
 
@@ -35,7 +35,7 @@ public class BlobInsertToHDFSController {
         }
 
 //        System.out.println("params: " + params.dest_path);
-        System.out.println("params: " + params);
+        logger.info("params: " + params);
 
         try {
 
@@ -43,13 +43,13 @@ public class BlobInsertToHDFSController {
             final ObjectMapper mapper = new ObjectMapper();
             final BlobInsertToHdfsRequestEntity entity = mapper.readValue(params, BlobInsertToHdfsRequestEntity.class);
 
-            System.out.println("dest_path!! => " + entity.dest_path);
+            logger.info("dest_path!! => " + entity.dest_path);
 
             final byte[] bytes = file.getBytes();
             final String name = file.getOriginalFilename();
 
             final Path path = Paths.get(entity.dest_path, name);
-            System.out.println("path_str: " + path.toString());
+            logger.info("path_str: " + path.toString());
 
             final File uploadFile = new File(Paths.get(entity.dest_path, name).toString());
             final BufferedOutputStream uploadFileStream = new BufferedOutputStream(new FileOutputStream(uploadFile));

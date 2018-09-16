@@ -5,6 +5,8 @@ import com.companyname.apps.entity.FilesInsertToImpalaRequestEntity;
 import com.companyname.apps.entity.BlobInsertToHdfsResponseEntity;
 import com.companyname.apps.util.HDFSFileWriter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.hadoop.security.UserGroupInformation;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +26,7 @@ public class FilesInsertToImpalaController {
     private static String UPLOADED_FOLDER = "/root/insert";
 
     private static final Logger logger = Logger.getLogger(FilesInsertToImpalaController.class.getName());
+    static final org.slf4j.Logger LOG = LoggerFactory.getLogger(UserGroupInformation.class);
 
     @PostMapping(value = "/files/insert/hdfs", consumes = {"multipart/form-data"})
     public ResponseEntity<BlobInsertToHdfsResponseEntity> upload(@RequestParam("file") MultipartFile file,
