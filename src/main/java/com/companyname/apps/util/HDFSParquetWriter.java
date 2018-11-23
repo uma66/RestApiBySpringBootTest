@@ -2,7 +2,6 @@ package com.companyname.apps.util;
 
 import com.companyname.apps.controller.HDFSWritableByteChannel;
 import com.companyname.apps.entity.ImpalaSchema;
-import com.sun.xml.internal.ws.api.pipe.Codecs;
 import org.apache.arrow.memory.RootAllocator;
 import org.apache.arrow.vector.*;
 import org.apache.arrow.vector.dictionary.DictionaryProvider;

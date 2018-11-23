@@ -33,6 +33,7 @@ repositories {
 
 dependencies {
 
+    // warファイルの出力先
     compile fileTree(dir: 'libs', include: '*.jar')
     // for web
     compile("org.springframework.boot:spring-boot-starter")
