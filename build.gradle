@@ -14,12 +14,12 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 // warファイルとして別のtomcatにデプロイするのに必要 => https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-create-a-deployable-war-file
-apply plugin: 'war'
+//apply plugin: 'war'
 
-war {
-    baseName = 'test_api'
-    version =  '1.0.0'
-}
+//war {
+//    baseName = 'test_api'
+//    version =  '1.0.0'
+//}
 
 group 'com.companyname.apps'
 version '1.0-SNAPSHOT'
@@ -34,7 +34,7 @@ repositories {
 dependencies {
 
     // warファイルの出力先
-    compile fileTree(dir: 'libs', include: '*.jar')
+//    compile fileTree(dir: 'libs', include: '*.jar')
     // for web
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework.boot:spring-boot-starter-web")
@@ -66,12 +66,13 @@ dependencies {
     compile group: 'org.xerial.snappy', name: 'snappy-java', version: '1.1.7.2'
 
     // 外部のtomcat上にデプロイする場合
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+//    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
 }
 
 jar.baseName = 'test_api'
 
-configurations {
-    providedRuntime
-}
+// Warファイルとして出力する場合
+//configurations {
+//    providedRuntime
+//}
