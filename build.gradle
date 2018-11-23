@@ -7,10 +7,19 @@ buildscript {
     }
 }
 
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+
+// warファイルとして別のtomcatにデプロイするのに必要 => https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-create-a-deployable-war-file
+apply plugin: 'war'
+
+war {
+    baseName = 'test_api'
+    version =  '1.0.0'
+}
 
 group 'com.companyname.apps'
 version '1.0-SNAPSHOT'
@@ -23,11 +32,15 @@ repositories {
 }
 
 dependencies {
+
+    compile fileTree(dir: 'libs', include: '*.jar')
     // for web
     compile("org.springframework.boot:spring-boot-starter")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-logging")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    // ホットデプロイに必要 => http://www.kojion.com/posts/723
+    compile('org.springframework.boot:spring-boot-devtools')
 
     // https://mvnrepository.com/artifact/junit/junit
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -51,4 +64,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.xerial.snappy/snappy-java
     compile group: 'org.xerial.snappy', name: 'snappy-java', version: '1.1.7.2'
 
+    // 外部のtomcat上にデプロイする場合
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+}
+
+jar.baseName = 'test_api'
+
+configurations {
+    providedRuntime
 }
