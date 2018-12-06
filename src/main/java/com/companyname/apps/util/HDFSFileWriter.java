@@ -1,3 +1,4 @@
+
 package com.companyname.apps.util;
 
 import org.apache.hadoop.conf.Configuration;
@@ -11,7 +12,7 @@ import java.util.logging.Logger;
 
 public class HDFSFileWriter {
 
-    static private String NameNodeHost = "hdfs://<Namenode-Host>:<Port>";
+    static private String NameNodeHost = "hdfs://namenode_host:8020";
     private Optional<FileSystem> fileSystem = Optional.ofNullable(null);
     private Configuration conf;
     private Boolean isLocal;
@@ -26,7 +27,7 @@ public class HDFSFileWriter {
     public HDFSFileWriter(Boolean isLocal) {
         this.isLocal = isLocal;
         setConf();
-        authWithKerberos();
+//        authWithKerberos();
     }
 
     private void setConf() {
@@ -35,6 +36,11 @@ public class HDFSFileWriter {
             this.conf.set("fs.defaultFS", "file://localhost");
         } else {
             this.conf.set("fs.defaultFS", NameNodeHost);
+            conf.addResource("/etc/hadoop/conf/core-site.xml");
+            conf.addResource("/etc/hadoop/conf/hdfs-site.xml");
+            conf.set("hadoop.job.ugi", "cloudera");
+            conf.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
+//            this.conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
         }
 
         logger.info("defaultFS=" + this.conf.get("fs.defaultFS"));
@@ -76,12 +82,12 @@ public class HDFSFileWriter {
         try {
             final FileSystem fs = getFileSystem();
 
-            //==== Create folder if not exists
-            final Path targetPath = new Path(targetDir);
-            if (!fs.exists(targetPath)) {
-                // Create new Directory
-                fs.mkdirs(targetPath);
-            }
+//            //==== Create folder if not exists
+//            final Path targetPath = new Path(targetDir);
+//            if (!fs.exists(targetPath)) {
+//                // Create new Directory
+//                fs.mkdirs(targetPath);
+//            }
 
             final Path hdfswritepath = new Path(Paths.get(targetDir, fileName).toString());
             FSDataOutputStream outputStream = fs.create(hdfswritepath);
